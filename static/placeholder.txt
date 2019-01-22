@@ -1,2 +1,0 @@
-Django zbierze pliki statyczne i umieści je w katalogu projekt/static/.
-

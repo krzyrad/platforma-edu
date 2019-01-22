@@ -1,0 +1,44 @@
+{% extends 'nauczyciel/nauczyciel_basic_page.html' %}
+{% block portal_active %}active{% endblock %}
+
+{% block header %}
+	<h3 align="center" style="font-family: times new roman;font-size: 50px;color: #728892">AKTUALNIE PROWADZONE ZAJĘCIA</h3>
+{% endblock header %}
+
+{% block body %}
+
+    <!-- Zajęcia -->
+    <div class="albums-container container-fluid" style="width: 100%; font-family: Ledger;font-size: 22px;">
+        <div class="col-sm-12"style="font-family: 'Alfa Slab One';font-size: 24px;">
+        </div >
+        {% if courses %}
+            {% for portal in courses %}
+                <div  class="col-sm-6 col-lg-4" >
+                    <div class="thumbnail" style="background-color: #e3f0e8;border: 0px solid #66cdaa;">
+                        <a href="{% url 'nauczyciel:nauczyciel_detail' portal.id %}">
+                             <img src="{{ portal.portal_logo.url }}" class="img-responsive">
+                            <!--{{ portal.name }}-->
+                        </a>
+
+                        <div class="caption" align="center">
+                            <h2>{{ portal.code }}</h2>
+                            <div style="height: 40px">
+                                <h4>{{ portal.name }}</h4>
+                            </div>
+                            <!-- Wyświetl szczegóły -->
+                            <a href="{% url 'nauczyciel:nauczyciel_detail' portal.id %}" class="btn btn-primary btn-sm" role="button">Wyświetl szczegóły</a>
+                        </div>
+
+                    </div>
+                </div>
+                {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+            {% endfor %}
+        {% else %}
+            <div class="col-sm-12">
+                <br>
+                <h4>Nie prowadzisz żadnych zajęć.</h4>
+            </div>
+        {% endif %}
+
+
+{% endblock %}

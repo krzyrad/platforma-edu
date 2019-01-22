@@ -1,0 +1,61 @@
+{% extends 'portal/basic_page.html' %}
+{% block portal_active %}active{% endblock %}
+
+{% block header %}
+	<h3 align="center" style="font-family: times new roman;font-size: 50px;color: #728892">TWOJE ZAJĘCIA I BIEŻĄCE WYDARZENIA</h3>
+{% endblock header %}
+
+{% block body %}
+
+
+<div class="albums-container container-fluid"style="font-family: Ledger;font-size: 22px;">
+
+    <!-- Zajęcia -->
+    <div class="row col-sm-9" >
+        <div class="col-sm-12"style="font-family: 'Alfa Slab One';font-size: 24px;">         
+        </div >
+        {% if courses %}
+            {% for portal in courses %}
+                <div  class="col-sm-6 col-lg-4" >
+                    <div class="thumbnail" style="background-color: #e3f0e8;border: 0px solid #66cdaa;">
+                        <a href="{% url 'portal:detail' portal.id %}">
+                             <img src="{{ portal.portal_logo.url }}" class="img-responsive">
+                        </a>
+
+                        <div class="caption" align="center">
+                            <h2>{{ portal.code }}</h2>
+                            <div style="height: 40px">
+                                <h4>{{ portal.name }}</h4>
+                            </div>
+                            <!-- Wyświetl szczegóły -->
+                            <a href="{% url 'portal:detail' portal.id %}" class="btn btn-primary btn-sm" role="button">Wyświetl szczegóły</a>
+                        </div>
+
+                    </div>
+                </div>
+                {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+            {% endfor %}
+        {% else %}
+            <div class="col-sm-12">
+                <br>
+                <h4>Nie uczestniczysz w żadnych zajęciach.</h4>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-sm-3" style=" position: fixed-right;text-align: center;overflow-y: scroll;background-color: #fff; height: 800px;color: #728892;font-family: times new roman;font-size: 17px;">
+        <div class="col-sm-10" style="font-family: Ledger;font-size: 13px;">
+        </div>
+        {% for notification in notifications reversed %}
+
+        <div style="background-color: #e3f0e8; border-radius: 2%;padding: 3px;margin: 3px;"><span class="glyphicon glyphicon-bell"></span> <b>{{ notification.portal }}</b><br>
+        <div style="font-size:11px;">{{ notification.time }}</div>
+        {{ notification.content }}
+        </div>
+
+        {% endfor %}
+    </div>
+
+</div>
+
+
+{% endblock %}

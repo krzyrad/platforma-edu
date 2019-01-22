@@ -1,0 +1,102 @@
+{% extends 'nauczyciel/nauczyciel_basic_page.html' %}
+{% block title %}{{ portal }}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block header %}
+        <h3 align="center" style="font-family: times new roman;font-size: 50px;color: #728892">GRUPOWE FORUM DYSKUSYJNE</h3>
+{% endblock header %}
+
+{% block body %}
+<br>
+<div class="container-fluid songs-container">
+
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="panel panel-default">
+                {% if portal in courses %}
+                <div class="panel-body" style="background-color: #e3f0e8;border: 0px solid #66cdaa;">
+                    <a href="{% url 'nauczyciel:nauczyciel_detail' portal.id %}">
+                        {% if portal.portal_logo %}
+                            <img src="{{ portal.portal_logo.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>Brak obrazu do wyświetlenia</h3>
+                        {% endif %}
+                    </a>
+                    <h1 align="center">{{ portal.code }}<br> <small>{{ portal.name }}</small></h1>
+                    <h2 align="center">{{ portal.nauczyciel }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9"style="color:white;">
+
+            <div class="col-sm-2">
+    <a href="{% url 'nauczyciel:add_assignment' portal.id %}">
+        <button type="submit" class="btn btn-success"style="font-size: larger;background-color: #337ab7;border-color: #2e6da4;margin-left: 19px"><span class="glyphicon glyphicon-plus"></span> DODAJ ZADANIE</button></a>
+            </div>
+
+
+            <div class="col-sm-2">
+    <a href="{% url 'nauczyciel:view_all_assignments' portal.id %}">
+        <button type="submit" class="btn btn-success"style="font-size: larger;background-color: #337ab7;border-color: #2e6da4;margin-left: 89px"><span class="glyphicon glyphicon-ok"></span> ROZWIĄZANIA</button></a>
+            </div>
+
+
+
+            <div class="col-sm-2">
+    <a href="{% url 'nauczyciel:add_resource' portal.id %}">
+        <button type="submit" class="btn btn-success"style="font-size: larger;background-color: #337ab7;border-color: #2e6da4;margin-left: 139px"><span class="glyphicon glyphicon-transfer"></span> PRZEŚLIJ PLIKI</button></a>
+            </div>
+
+
+            <div class="col-sm-2">
+    <a href="{% url 'nauczyciel:add_notification' portal.id %}">
+        <button type="submit" class="btn btn-success"style="font-size: larger;background-color: #337ab7;border-color: #2e6da4;margin-left: 196px"><span class="glyphicon glyphicon-bullhorn"></span> OGŁOSZENIE</button></a>
+            </div>
+
+
+            <div class="col-sm-4"></div>
+            <br><br><br>
+
+
+
+            <div class="col-sm-10" style=" position: fixed-right; width: 100%;overflow-y: scroll; height: 600px;background-color: #fff;color: black;font-family: times new roman;font-size: 16px;">
+
+                <h1 style="text-align: center;font-family: times new roman;font-size: 40px;color: #728892">Wiadomości od członków grupy <span class="glyphicon glyphicon-comment"></span></h1>
+
+
+                <br>
+                 <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="portal" value="{{ portal }}">
+
+                    {% for field in form %}
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <span class="text-danger small">{{ field.errors }}</span>
+                        </div>
+
+                    <div class="col-sm-10" style="color: black; width: 100%;">{{ field }}
+                    <button type="submit" style="background-color: #337ab7;border-color: #2e6da4;margin-left: 20px" class="btn btn-success"><span class="glyphicon glyphicon-send"></span> Napisz na forum</button>
+                    </div>
+                    </div>
+                    {% endfor %}
+
+
+                </form>
+    {% for message in messages reversed %}
+        <br>
+                <div style="background-color: #e3f0e8; border-radius: 2%;padding: 10px; margin: 2px">
+                   <span class="glyphicon glyphicon-user"></span><b> {{ message.sender }}</b><br>
+                    <div style="font-size: 12px;">{{ message.time }}</div>
+                    {{ message.content }}<br>
+                </div>
+    {% endfor %}
+        </div><br><br><br>
+        </div><br><br><br>
+    </div><br><br><br>
+</div>
+{% else %}
+    Nie prowadzisz tych zajęć.
+{% endif %}
+{% endblock %}

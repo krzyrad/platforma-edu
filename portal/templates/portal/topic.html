@@ -1,0 +1,29 @@
+{% extends 'portal/basic_page.html' %}
+
+{% block header %}
+  <h3 align="center" style="font-family: times new roman;font-size: 50px;color: #728892">{{ topic }}</h3>
+{% endblock header %}
+
+{% block body %}
+  <p>
+    <a href="{% url 'portal:new_entry' topic.id %}"><span class="glyphicon glyphicon-plus"></span> Dodaj nową notatkę</a>
+  </p>
+
+  {% for entry in entries %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>
+          {{ entry.date_added|date:'d M Y H:i' }}
+          <small>
+            <a href="{% url 'portal:edit_entry' entry.id %}"><span class="glyphicon glyphicon-edit"></span> Edytuj notatkę</a>
+          </small>
+        </h3>
+      </div>
+      <div class="panel-body">
+        {{ entry.text|safe }}
+      </div>
+    </div>
+  {% empty %}
+    Nie ma jeszcze żadnej notatki dla tego tematu.
+  {% endfor %}
+{% endblock %}

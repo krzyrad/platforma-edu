@@ -1,0 +1,68 @@
+{% extends 'nauczyciel/nauczyciel_basic_page.html' %}
+{% block portal_active %}active{% endblock %}
+
+{% block header %}
+        <h3 align="center" style="font-family: times new roman;font-size: 50px;color: #728892">WYŚLIJ GRUPOWE OGŁOSZENIE</h3>
+{% endblock header %}
+
+{% block body %}
+<br>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body" style="background-color: #e3f0e8;border: 0px solid #66cdaa;">
+                    <a href="{% url 'nauczyciel:nauczyciel_detail' portal.id %}">
+                        {% if portal.portal_logo %}
+                            <img src="{{ portal.portal_logo.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>Brak obrazu do wyświetlenia.</h3>
+                        {% endif %}
+                    </a>
+                    <h1 align="center">{{ portal.code }}<br> <small>{{ portal.name }}</small></h1>
+                    <h2 align="center">{{ portal.nauczyciel }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br>
+        <div class="col-sm-7">
+
+           <div class="panel-body"style="background-color: #fff;color: black;font-family: 'Abhaya Libre';font-size: 16px;">
+             <h3 align="center"; style="text-align: center;font-family: times new roman;font-size: 40px;color: #728892">Dodaj ogłoszenie <span class="glyphicon glyphicon-bullhorn"></span></h3>
+               {% if error_message %}
+                   <p><strong>{{ error_message }}</strong></p>
+               {% endif %}
+    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <span class="text-danger small">{{ field.errors }}</span>
+            </div>
+        <label class="control-label col-sm-2">{{ field.label_tag }}</label>
+        <div class="col-sm-5">{{ field }}</div>
+        </div>
+        {% endfor %}
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-10">
+                <button type="submit" class="btn btn-success" style="background-color: #337ab7;border-color: #2e6da4;"><span class="glyphicon glyphicon-bell"></span> Ogłoś natychmiastowo</button>
+            </div>
+        </div>
+    </form>
+                </div>
+            </div>
+
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+

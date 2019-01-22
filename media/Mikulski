@@ -1,0 +1,23 @@
+#include<iostream>
+#include<cstdlib>
+
+using namespace std;
+
+int main()
+{	
+	int liczba;
+	
+	cout<<"Podaj dwucyfrową liczbę: ";
+	cin>>liczba;
+	
+	if(!(liczba>9 && liczba<100))
+		cout<<"Podana liczba nie jest dwucyfrowa!\n";
+	else
+		if((liczba%2==0 && (liczba/10)%2 == 0) || (liczba%10)+liczba/10 == 5)
+			cout<<"Liczba spełnia kryteria zadania\n";
+		else
+			cout<<"Liczba nie spełnia krytriów zadania\n";
+	
+	system("pause");
+	return 0;
+}

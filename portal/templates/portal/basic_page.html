@@ -1,0 +1,66 @@
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Platforma edukacyjna</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+  </head>
+
+  <body>
+
+    <!-- Pasek nawigacji -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" 
+              data-toggle="collapse" data-target="#navbar" 
+              aria-expanded="false" aria-controls="navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'portal:index' %}"><span class="glyphicon glyphicon-education"></span> Platforma edukacyjna</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'portal:topics' %}"><span class="glyphicon glyphicon-book"></span> Notatki</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+              <li><a><span class="glyphicon glyphicon-user"></span> Witaj, {{ user.username }}.</a></li>
+              <li><a href="{% url 'logout_user' %}">Wyloguj się <span class="glyphicon glyphicon-log-out"></span></a></li>
+            {% endif %}
+          </ul>
+        </div>
+          
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="page-header">
+        {% block header %}{% endblock header %}
+      </div>
+      <div>
+        {% block body %}{% endblock %}
+      </div>
+
+    </div>
+
+</body>
+
+    </html>
+

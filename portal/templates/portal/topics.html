@@ -1,0 +1,21 @@
+{% extends 'portal/basic_page.html' %}
+
+{% block header %}
+	<h3 style="font-family: times new roman;font-size: 50px;color: #728892">TWOJE TEMATY NOTATEK</h3>
+{% endblock header %}
+
+{% block body %}
+  <ul>
+    {% for topic in topics %}
+      
+        <h3>
+          <a href="{% url 'portal:topic' topic.id %}"><span class="glyphicon glyphicon-edit"></span> {{ topic }}</a>
+        </h3>
+      
+    {% empty %}
+      <li>Nie został jeszcze dodany żaden temat.</li>
+    {% endfor %}
+  </ul>
+
+  <h3><a href="{% url 'portal:new_topic' %}"><span class="glyphicon glyphicon-plus"></span> Dodaj nowy temat notatki</h3>
+{% endblock %}

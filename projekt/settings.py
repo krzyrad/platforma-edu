@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     #Aplikacje innych firm
     'bootstrap3',
     'django_summernote',
-    'storages',
 ]
 
 MIDDLEWARE = [

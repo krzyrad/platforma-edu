@@ -240,6 +240,8 @@ if os.getcwd() == '/app':
     #Zezwolenie na nagłówki hosta
     ALLOWED_HOSTS = ['*']
 
+    DEBUG = False
+
     #Konfiguracja zasobów
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

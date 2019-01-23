@@ -238,7 +238,9 @@ if os.getcwd() == '/app':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     #Zezwolenie na nagłówki hosta
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['https://platforma-edu.herokuapp.com']
+
+    DEBUG = False
 
     #Konfiguracja zasobów
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))

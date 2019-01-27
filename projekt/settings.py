@@ -134,12 +134,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-
+#Ustawienia dla AWS S3
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
 AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN", "")
-
+#-----
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -251,8 +251,11 @@ if os.getcwd() == '/app':
     ALLOWED_HOSTS = ['*']
 
     #Konfiguracja zasobów
+
+    #AWS S3
     MEDIA_URL = "https://platforma-bucket.s3.amazonaws.com/"
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_DIRS = (

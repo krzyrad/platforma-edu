@@ -51,7 +51,7 @@ class Course(models.Model):
 #Klasa reprezentująca zadania.
 class Assignment(models.Model):
     #Opis zadania.
-    description = models.CharField(max_length=1000, default='')
+    description = models.TextField(max_length=1000, default='')
 
     #Materiały pomocnicze do zadania.
     file = models.FileField(default='')

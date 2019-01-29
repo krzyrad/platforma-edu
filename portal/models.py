@@ -32,7 +32,7 @@ class Student(models.Model):
 #Klasa reprezentująca wiadomośći wyświetlane na forum.
 class Message(models.Model):
     #Treść wiadomości.
-    content = models.CharField(max_length=500)
+    content = models.CharField(max_length=150)
 
     #Zajęcia związane z wiadomośćią.
     portal = models.ForeignKey(Course,default=1,on_delete=None)
@@ -49,7 +49,7 @@ class Message(models.Model):
 #Klasa reprezentująca powiadomienia otrzymywane przez studentów.
 class Notification(models.Model):
     #Treść powiadomienia.
-    content = models.TextField()
+    content = models.TextField(max_length=1000)
 
     #Zajęcia związane z powiadomieniem.
     portal = models.ForeignKey(Course, default=1, on_delete=None)

@@ -6,12 +6,12 @@ from portal.models import Student
 
 #Klasa reprezentująca formularz rejesstracji użytkownika.
 class UserRegistration(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(label=("Hasło użytkownika"), widget=forms.PasswordInput)
 
     class Meta:
         model = User
         fields = ['username', 'password']
-        labels = {'username': 'Nazwa użytkownika', 'password': 'Hasło użytkownika'}
+        labels = {'username': 'Nazwa użytkownika'}
 
 
 #Klasa reprezentująca formularz rejestracji studenta.

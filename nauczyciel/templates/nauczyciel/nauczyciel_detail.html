@@ -30,32 +30,16 @@
 
         <div class="col-sm-9"style="color:white;">
 
-            <div class="col-sm-2">
-    <a href="{% url 'nauczyciel:add_assignment' portal.id %}">
-        <button type="submit" class="btn btn-success"style="font-size: larger;background-color: #337ab7;border-color: #2e6da4;margin-left: 19px"><span class="glyphicon glyphicon-plus"></span> DODAJ ZADANIE</button></a>
-            </div>
-
-
-            <div class="col-sm-2">
-    <a href="{% url 'nauczyciel:view_all_assignments' portal.id %}">
-        <button type="submit" class="btn btn-success"style="font-size: larger;background-color: #337ab7;border-color: #2e6da4;margin-left: 89px"><span class="glyphicon glyphicon-ok"></span> ROZWIĄZANIA</button></a>
-            </div>
-
-
-
-            <div class="col-sm-2">
-    <a href="{% url 'nauczyciel:add_resource' portal.id %}">
-        <button type="submit" class="btn btn-success"style="font-size: larger;background-color: #337ab7;border-color: #2e6da4;margin-left: 139px"><span class="glyphicon glyphicon-transfer"></span> PRZEŚLIJ PLIKI</button></a>
-            </div>
-
-
-            <div class="col-sm-2">
-    <a href="{% url 'nauczyciel:add_notification' portal.id %}">
-        <button type="submit" class="btn btn-success"style="font-size: larger;background-color: #337ab7;border-color: #2e6da4;margin-left: 196px"><span class="glyphicon glyphicon-bullhorn"></span> OGŁOSZENIE</button></a>
-            </div>
-
-
-            <div class="col-sm-4"></div>
+        	<div class="btn-group" style="width:100%">
+		  <a href="{% url 'nauczyciel:add_assignment' portal.id %}">
+		        <button style="width:25%"><span class="glyphicon glyphicon-plus"></span> DODAJ ZADANIE</button></a>
+		  <a href="{% url 'nauczyciel:view_all_assignments' portal.id %}">
+		        <button style="width:25%"><span class="glyphicon glyphicon-ok"></span> ROZWIĄZANIA</button></a>
+		  <a href="{% url 'nauczyciel:add_resource' portal.id %}">
+		        <button style="width:25%"><span class="glyphicon glyphicon-transfer"></span> PRZEŚLIJ PLIKI</button></a>
+		  <a href="{% url 'nauczyciel:add_notification' portal.id %}">
+		        <button style="width:25%"><span class="glyphicon glyphicon-bullhorn"></span> OGŁOSZENIE</button></a>
+		</div>
             <br><br><br>
 
 

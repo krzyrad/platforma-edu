@@ -16,6 +16,32 @@
 
   </head>
 
+  <style>
+  .btn-group button {
+    background-color: #337ab7;
+    border: 1px solid #2e6da4;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: left;
+    font-size: larger;
+  }
+
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .btn-group button:not(:last-child) {
+    border-right: none;
+  }
+
+  .btn-group button:hover {
+    background-color: #337ab0;
+  }
+  </style>
+
   <body>
 
     <!-- Pasek nawigacji -->
